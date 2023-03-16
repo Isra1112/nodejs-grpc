@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message User {
+  string id = 1;
+  string name = 2;
+  int32 age = 3;
+}
+service UserService {
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc GetAllusers (Empty) returns (UserList) {}
+  rpc AddUser (User) returns (User) {};
+  rpc UpdateUser (User) returns (User) {};
+  rpc DeleteUser (User) returns (User) {};
+}
+
+message Empty {}
+
+
+message UserList {
+  repeated User users = 1;
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
